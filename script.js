@@ -6,8 +6,8 @@
 //   3. Replace PADDLE_CLIENT_TOKEN and PADDLE_PRICE_ID below with your values.
 //   4. Set Paddle.Environment.set("sandbox") for testing, remove for production.
 
-const PADDLE_CLIENT_TOKEN = "REPLACE_WITH_YOUR_PADDLE_CLIENT_TOKEN";
-const PADDLE_PRICE_ID     = "REPLACE_WITH_YOUR_PADDLE_PRICE_ID";
+const PADDLE_CLIENT_TOKEN = "live_579bce3839d79a9bc0ef2ee9cd3";
+const PADDLE_PRICE_ID     = "pri_01krkvwy4nbz0fjvbde2twf6n6";
 
 function paddleConfigured() {
     return !PADDLE_CLIENT_TOKEN.startsWith("REPLACE_") && !PADDLE_PRICE_ID.startsWith("REPLACE_");
