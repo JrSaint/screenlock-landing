@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#163680">
+
+<title>ScreenLock — Lock Mac Keyboard, Mouse &amp; Trackpad (Screen Stays On)</title>
+<meta name="description" content="Lock your Mac's keyboard, mouse, and trackpad with a hotkey or PIN while apps keep running on screen. For parents with kids, streamers, presenters, and demo kiosks. $9.99, macOS 12+.">
+<meta name="keywords" content="mac keyboard lock, mac mouse lock, lock input mac, kid lock mac, child proof mac, lock keyboard while screen on, lock mouse mac, mac kiosk mode, screenlock, splashtop input lock alternative">
+
+<!-- IMPORTANT: replace screenlock.app with your real domain everywhere on this page. -->
+<link rel="canonical" href="https://screenlock.app/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://screenlock.app/">
+<meta property="og:title" content="ScreenLock — Lock Mac Keyboard, Mouse &amp; Trackpad (Screen Stays On)">
+<meta property="og:description" content="Lock your Mac's keyboard, mouse, and trackpad with a hotkey or PIN while apps keep running on screen. For parents, streamers, presenters, demo kiosks.">
+<meta property="og:image" content="https://screenlock.app/assets/icon.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="1024">
+<meta property="og:site_name" content="ScreenLock">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ScreenLock — Lock Mac Keyboard, Mouse &amp; Trackpad">
+<meta name="twitter:description" content="Lock keyboard, mouse, and trackpad on macOS while apps stay running. Hotkey or PIN to unlock. $9.99, macOS 12+.">
+<meta name="twitter:image" content="https://screenlock.app/assets/icon.png">
+
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Paddle Checkout. Replace the token with yours from paddle.com → Developer Tools → Authentication. -->
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+
+<!-- Structured data: SoftwareApplication. Drives Google rich snippets (price, OS, screenshot). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ScreenLock",
+  "operatingSystem": "macOS 12.0 or later",
+  "applicationCategory": "UtilitiesApplication",
+  "applicationSubCategory": "Productivity",
+  "description": "Lock keyboard, mouse, and trackpad on a Mac while apps keep running on screen. Hotkey or PIN to unlock. For parents with young kids, streamers, presenters, and demo kiosks.",
+  "url": "https://screenlock.app/",
+  "image": "https://screenlock.app/assets/icon.png",
+  "screenshot": "https://screenlock.app/assets/icon.png",
+  "softwareVersion": "0.3.0",
+  "publisher": {
+    "@type": "Organization",
+    "name": "KERIGAMI LLC"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "9.99",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://screenlock.app/#buy"
+  }
+}
+</script>
+
+<!-- Structured data: FAQPage. Drives FAQ rich snippets directly in Google search results. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does ScreenLock need Accessibility permission?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "macOS requires Accessibility access for any app that intercepts input — that's how keyboards and mice get blocked. ScreenLock uses only that permission and nothing else."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if my Mac crashes while ScreenLock is locked?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Input is restored automatically. The lock is software-only — if ScreenLock isn't running, nothing is blocked. The same is true if you force-quit it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can my kid bypass ScreenLock by mashing the keyboard?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Every key press and click is intercepted by macOS before it reaches any app. Mashing won't drift into your PIN either — the buffer resets on any non-digit press or 5 seconds of idle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What macOS versions does ScreenLock support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "macOS 12 Monterey and later, including Sequoia and Tahoe. Both Apple Silicon and Intel Macs are supported."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I forget my PIN?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your hotkey always works as the primary unlock. You can also open the ScreenLock menu in the menu bar (when unlocked) to change your PIN."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ScreenLock work with multiple monitors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The lock applies to input from your keyboard, mouse, and trackpad — independent of which screen the cursor is on."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is ScreenLock available for Windows or Linux?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not planned. ScreenLock is built on macOS-specific APIs (CGEventTap) that don't have direct equivalents on other platforms."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="topnav">
+    <a href="#" class="brand">
+        <img src="assets/icon.png" alt="ScreenLock" width="32" height="32">
+        <span>ScreenLock</span>
+    </a>
+    <a href="#buy" class="nav-cta" onclick="openCheckout(); return false;">Buy $9.99</a>
+</nav>
+
+<header class="hero">
+    <div class="hero-inner">
+        <img src="assets/icon.png" alt="ScreenLock app icon" class="hero-icon" width="180" height="180">
+        <h1>Lock your input, not your screen.</h1>
+        <p class="lede">
+            Keep YouTube, Zoom, presentations, and dashboards running while
+            keyboard, mouse, and trackpad are completely locked. Press a hotkey
+            or type a PIN to unlock — in one second.
+        </p>
+        <div class="cta-row">
+            <button type="button" class="btn-primary" onclick="openCheckout()">Buy ScreenLock — $9.99</button>
+            <span class="cta-meta">macOS 12 and later · One-time purchase · No subscription</span>
+        </div>
+    </div>
+</header>
+
+<section class="use-cases">
+    <div class="container">
+        <h2>Made for the moments when <em>watching</em> matters, not <em>touching</em>.</h2>
+        <div class="grid-4">
+            <div class="use-card">
+                <div class="use-emoji" aria-hidden="true">👶</div>
+                <h3>Parents with little kids</h3>
+                <p>YouTube Kids keeps playing. Your spreadsheet stays untouched. Your unread emails stay unsent.</p>
+            </div>
+            <div class="use-card">
+                <div class="use-emoji" aria-hidden="true">🎥</div>
+                <h3>Streamers &amp; creators</h3>
+                <p>Lock input mid-stream without minimizing OBS. Your chat stays visible, your scene stays live.</p>
+            </div>
+            <div class="use-card">
+                <div class="use-emoji" aria-hidden="true">🏪</div>
+                <h3>Demo &amp; kiosk computers</h3>
+                <p>A screen they can see, a Mac they can't break. Retail demos, signage, museum displays.</p>
+            </div>
+            <div class="use-card">
+                <div class="use-emoji" aria-hidden="true">🎤</div>
+                <h3>Presenters</h3>
+                <p>Keep the slides live, lock the controls during Q&amp;A. No accidental clicks, no broken flow.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2>What you get</h2>
+        <div class="grid-3 features-grid">
+            <div class="feature">
+                <h3>Lock anything, individually</h3>
+                <p>Keyboard, mouse clicks, mouse movement, scrolling, and trackpad gestures — toggle each separately.</p>
+            </div>
+            <div class="feature">
+                <h3>Custom hotkey</h3>
+                <p>Default is ⌃⌥⌘L. Change it to anything that fits your fingers.</p>
+            </div>
+            <div class="feature">
+                <h3>PIN unlock</h3>
+                <p>Set a 4–8 digit PIN. Type it on the keyboard while locked — the digits stay invisible. Kids can watch you press the hotkey, but they can't see your PIN.</p>
+            </div>
+            <div class="feature">
+                <h3>Auto-unlock timer</h3>
+                <p>Lock for 15, 30, 60, or 120 minutes and walk away. Unlocks itself when you're back.</p>
+            </div>
+            <div class="feature">
+                <h3>Native Mac, menu bar only</h3>
+                <p>No Dock icon, no Cmd-Tab footprint, no Electron. Just a tiny lock in your menu bar.</p>
+            </div>
+            <div class="feature">
+                <h3>Zero data collection</h3>
+                <p>No analytics, no network calls, no accounts. Settings stay on your Mac. Period.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="how">
+    <div class="container">
+        <h2>How it works</h2>
+        <ol class="steps">
+            <li>
+                <div class="step-num">1</div>
+                <h3>Press your hotkey</h3>
+                <p>Or click <strong>Lock for…</strong> in the menu bar and pick a duration.</p>
+            </li>
+            <li>
+                <div class="step-num">2</div>
+                <h3>Apps stay running, input goes dead</h3>
+                <p>Your screen keeps doing exactly what it was. Keyboard, mouse, trackpad, gestures — nothing reaches any app.</p>
+            </li>
+            <li>
+                <div class="step-num">3</div>
+                <h3>Press the hotkey again. Or type your PIN.</h3>
+                <p>Instant unlock. No password screen, no app switching, no interruption.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section class="buy" id="buy">
+    <div class="container narrow">
+        <h2>One purchase. Every Mac you own.</h2>
+        <p class="lede">
+            $9.99 one-time. macOS 12 or later. Free updates within v1.
+            Refund within 14 days if it isn't for you.
+        </p>
+        <button type="button" class="btn-primary btn-large" onclick="openCheckout()">Buy ScreenLock — $9.99</button>
+        <p class="fine-print">Code-signed and notarized by KERIGAMI LLC. Verified by Apple on every launch.</p>
+    </div>
+</section>
+
+<section class="faq">
+    <div class="container narrow">
+        <h2>FAQ</h2>
+
+        <details>
+            <summary>Why does it need Accessibility permission?</summary>
+            <p>macOS requires Accessibility access for any app that intercepts input — that's how keyboards and mice get blocked. ScreenLock uses only that permission and nothing else.</p>
+        </details>
+
+        <details>
+            <summary>What if my computer crashes while locked?</summary>
+            <p>Input is restored automatically. The lock is software-only — if ScreenLock isn't running, nothing is blocked. The same is true if you force-quit it.</p>
+        </details>
+
+        <details>
+            <summary>Can my kid bypass it by mashing the keyboard?</summary>
+            <p>No. Every key press and click is intercepted by macOS before it reaches any app. Mashing won't drift into your PIN either — the buffer resets on any non-digit press or 5 seconds of idle.</p>
+        </details>
+
+        <details>
+            <summary>What macOS versions are supported?</summary>
+            <p>macOS 12 Monterey and later (including Sequoia and Tahoe). Apple Silicon and Intel.</p>
+        </details>
+
+        <details>
+            <summary>What if I forget my PIN?</summary>
+            <p>Your hotkey always works as the primary unlock. Or click the ScreenLock menu in the menu bar (when unlocked) to change the PIN.</p>
+        </details>
+
+        <details>
+            <summary>Does it work with multiple monitors?</summary>
+            <p>Yes. The lock applies to input from your keyboard, mouse, and trackpad — independent of which screen the cursor is on.</p>
+        </details>
+
+        <details>
+            <summary>Will you ship a Windows or Linux version?</summary>
+            <p>Not planned. ScreenLock is built on macOS-specific APIs (CGEventTap) that don't have direct equivalents on other platforms.</p>
+        </details>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-left">
+            <img src="assets/icon.png" alt="" width="32" height="32">
+            <span>ScreenLock</span>
+        </div>
+        <div class="footer-right">
+            <a href="mailto:hello@screenlock.app">Support</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <span class="copyright">© 2026 KERIGAMI LLC</span>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

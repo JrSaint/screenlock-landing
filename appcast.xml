@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+     xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>ScreenLock Updates</title>
+        <link>https://screenlock.app/appcast.xml</link>
+        <description>Auto-update feed for ScreenLock — a Mac utility that locks keyboard, mouse, and trackpad while apps keep running.</description>
+        <language>en</language>
+
+        <item>
+            <title>Version 0.3.0</title>
+            <pubDate>Thu, 14 May 2026 12:00:00 -0500</pubDate>
+            <sparkle:version>0.3.0</sparkle:version>
+            <sparkle:shortVersionString>0.3.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h2>What's new in 0.3.0</h2>
+                <ul>
+                    <li><b>PIN unlock</b> — alternate to the hotkey. Type your 4–8 digit PIN on the keyboard while locked; digits stay invisible.</li>
+                    <li><b>Auto-unlock timer</b> — pick 15 / 30 / 60 / 120 minutes from the menu; ScreenLock unlocks itself when time's up.</li>
+                    <li><b>Per-category lock toggles</b> — independently lock keyboard, mouse clicks, mouse movement, scrolling, and trackpad gestures.</li>
+                    <li><b>Custom hotkey recorder</b> — set any combo with at least one of ⌘ ⌥ ⌃.</li>
+                    <li>Signed by KERIGAMI LLC, notarized by Apple, auto-updates enabled.</li>
+                </ul>
+            ]]></description>
+            <enclosure
+                url="https://screenlock.app/downloads/ScreenLock-0.3.0.dmg"
+                sparkle:version="0.3.0"
+                sparkle:shortVersionString="0.3.0"
+                sparkle:edSignature="i4+ZMnKNo/air0Lfwk+ujDZr8LUk9571YC1gVFq5s03H2O4Xj5FKDMqS+Rvst4TM/VCUgPhiirdI+eXmDJzcCA=="
+                length="2034194"
+                type="application/x-apple-diskimage"/>
+        </item>
+    </channel>
+</rss>
