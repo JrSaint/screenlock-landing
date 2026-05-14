@@ -14,8 +14,10 @@ function paddleConfigured() {
 }
 
 if (paddleConfigured() && window.Paddle) {
-    // Paddle.Environment.set("sandbox"); // uncomment for sandbox testing
-    Paddle.Initialize({ token: PADDLE_CLIENT_TOKEN });
+    Paddle.Initialize({
+        token: PADDLE_CLIENT_TOKEN,
+        environment: "production",
+    });
 }
 
 function openCheckout() {
