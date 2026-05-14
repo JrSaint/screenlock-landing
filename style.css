@@ -359,7 +359,55 @@ details p {
     color: var(--ink-mid);
 }
 
-/* === Legal pages (privacy / terms) === */
+/* === Pricing card === */
+.price-card {
+    background: linear-gradient(180deg, var(--paper-tint) 0%, var(--paper) 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    text-align: center;
+    margin: 32px 0;
+    box-shadow: var(--shadow);
+}
+
+.price-amount {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--blue-deep);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.price-sub {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin-top: 6px;
+    margin-bottom: 28px;
+}
+
+.price-includes {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    text-align: left;
+    display: inline-block;
+}
+
+.price-includes li {
+    padding: 6px 0 6px 28px;
+    position: relative;
+    color: var(--ink);
+}
+
+.price-includes li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--blue-mid);
+    font-weight: 700;
+}
+
+/* === Legal pages (privacy / terms / refunds / pricing) === */
 .legal {
     padding: 60px 0 80px;
 }
