@@ -9,6 +9,27 @@
         <language>en</language>
 
         <item>
+            <title>Version 0.4.1</title>
+            <pubDate>Mon, 18 May 2026 19:59:42 +0000</pubDate>
+            <sparkle:version>0.4.1</sparkle:version>
+            <sparkle:shortVersionString>0.4.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h2>What's new in 0.4.1</h2>
+                <ul>
+                    <li><b>Touch ID is the unlock action now</b>, not a confirmation step after the hotkey. When you lock with Touch ID enabled, the prompt appears automatically — just tap the sensor to unlock. No hotkey needed. If you dismiss the prompt, press your hotkey to bring it back. PIN still works as a fallback.</li>
+                </ul>
+            ]]></description>
+            <enclosure
+                url="https://screenlock.app/downloads/ScreenLock-0.4.1.dmg"
+                sparkle:version="0.4.1"
+                sparkle:shortVersionString="0.4.1"
+                sparkle:edSignature="8sUWxoqxhruN1Xk4dzWAvwaLXjicQXy9CVbAqxCc9JQK1QcOUGpkFTwWs2mA3WrhJJDZi/xVnnlZW41bQT4dAQ=="
+                length="1668656"
+                type="application/x-apple-diskimage"/>
+        </item>
+
+        <item>
             <title>Version 0.4.0</title>
             <pubDate>Mon, 18 May 2026 19:51:09 +0000</pubDate>
             <sparkle:version>0.4.0</sparkle:version>
