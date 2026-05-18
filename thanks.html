@@ -25,13 +25,20 @@
         <h1>Thanks for buying ScreenLock!</h1>
         <p class="updated">You should also have a receipt in your inbox from Paddle.</p>
 
-        <div class="price-card">
+        <div class="price-card" id="download-card">
             <h2 style="margin-top:0">Download ScreenLock</h2>
-            <p>Click the button to grab the latest signed and notarized release. After downloading, drag <strong>ScreenLock.app</strong> to your <strong>Applications</strong> folder, double-click to launch, and grant Accessibility permission when macOS asks.</p>
-            <a class="btn-primary btn-large" href="downloads/ScreenLock-0.3.1.dmg" download style="display:inline-block;text-decoration:none">
-                Download ScreenLock 0.3.1
+            <p id="download-status">Verifying your purchase…</p>
+            <a id="download-btn" class="btn-primary btn-large" href="#" download style="display:none;text-decoration:none">
+                Download ScreenLock
             </a>
-            <p class="fine-print">macOS 12 (Monterey) or later · Universal binary (Apple Silicon &amp; Intel)</p>
+            <p id="download-help" class="fine-print" style="display:none">
+                If the button doesn't trigger a download automatically, click it manually.
+                The DMG is ~2 MB.
+            </p>
+            <div id="download-error" style="display:none">
+                <p>We couldn't verify your purchase from this URL.</p>
+                <p>If you just paid, email <a href="mailto:hello@screenlock.app">hello@screenlock.app</a> with your Paddle order number (from your receipt) and we'll send you the download link directly.</p>
+            </div>
         </div>
 
         <h2>First-launch checklist</h2>
@@ -71,6 +78,52 @@
         </div>
     </div>
 </footer>
+
+<script>
+(function () {
+    const WORKER = "https://screenlock-api.santosministries.workers.dev/download";
+
+    const $status = document.getElementById("download-status");
+    const $btn = document.getElementById("download-btn");
+    const $help = document.getElementById("download-help");
+    const $error = document.getElementById("download-error");
+
+    function showError(reason) {
+        $status.style.display = "none";
+        $btn.style.display = "none";
+        $help.style.display = "none";
+        $error.style.display = "block";
+        if (reason) console.warn("[thanks] download blocked:", reason);
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    // Paddle Billing redirects with _ptxn=txn_xxx. We also accept ?txn= just in case.
+    const txn = params.get("_ptxn") || params.get("txn");
+
+    if (!txn) {
+        showError("missing _ptxn — likely a direct visit, not a post-purchase redirect");
+        return;
+    }
+
+    fetch(WORKER + "?txn=" + encodeURIComponent(txn), { method: "GET" })
+        .then(r => r.json().then(body => ({ status: r.status, body })))
+        .then(({ status, body }) => {
+            if (status !== 200 || !body.downloadUrl) {
+                showError(body.error || ("HTTP " + status));
+                return;
+            }
+            $status.textContent = "Your purchase is confirmed.";
+            $btn.href = body.downloadUrl;
+            $btn.textContent = "Download ScreenLock " + body.version;
+            $btn.style.display = "inline-block";
+            $help.style.display = "block";
+            // Auto-start the download. Modern browsers respect the `download`
+            // attribute when the click is programmatic.
+            setTimeout(() => $btn.click(), 600);
+        })
+        .catch(err => showError("network error: " + err.message));
+})();
+</script>
 
 </body>
 </html>
