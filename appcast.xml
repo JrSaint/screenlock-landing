@@ -9,6 +9,27 @@
         <language>en</language>
 
         <item>
+            <title>Version 0.3.3</title>
+            <pubDate>Mon, 18 May 2026 18:17:31 +0000</pubDate>
+            <sparkle:version>0.3.3</sparkle:version>
+            <sparkle:shortVersionString>0.3.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h2>What's new in 0.3.3</h2>
+                <ul>
+                    <li><b>Cursor freeze actually works now (for real this time).</b> 0.3.2 added <code>CGAssociateMouseAndMouseCursorPosition(0)</code> but modern macOS doesn't reliably hold the cursor with that API alone. 0.3.3 captures the cursor position at lock-time and warps the cursor back to it on every mouseMoved/dragged event while locked — deterministic freeze.</li>
+                </ul>
+            ]]></description>
+            <enclosure
+                url="https://screenlock.app/downloads/ScreenLock-0.3.3.dmg"
+                sparkle:version="0.3.3"
+                sparkle:shortVersionString="0.3.3"
+                sparkle:edSignature="Sky+YlpaNYBZ0ljwHvxY4OuAHWdg1X+kltaaIu/WTNiK6bSXeJ58H+Vz8D1g3V/9B+WWs3V1tljJ3A7eyhqaDw=="
+                length="2037706"
+                type="application/x-apple-diskimage"/>
+        </item>
+
+        <item>
             <title>Version 0.3.2</title>
             <pubDate>Mon, 18 May 2026 18:07:28 +0000</pubDate>
             <sparkle:version>0.3.2</sparkle:version>
