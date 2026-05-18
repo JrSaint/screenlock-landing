@@ -34,7 +34,10 @@ function openCheckout() {
         settings: {
             displayMode: "overlay",
             theme: "light",
-            successUrl: window.location.origin + "/thanks.html",
+            // {transaction_id} is the Paddle Billing placeholder that gets
+            // substituted with the real txn ID on redirect. Empirically,
+            // Paddle does NOT always auto-append _ptxn, so make it explicit.
+            successUrl: window.location.origin + "/thanks.html?_ptxn={transaction_id}",
         },
     });
 }
