@@ -9,6 +9,27 @@
         <language>en</language>
 
         <item>
+            <title>Version 0.3.4</title>
+            <pubDate>Mon, 18 May 2026 18:31:50 +0000</pubDate>
+            <sparkle:version>0.3.4</sparkle:version>
+            <sparkle:shortVersionString>0.3.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h2>What's new in 0.3.4</h2>
+                <ul>
+                    <li><b>Cursor now hides while locked.</b> When "Mouse movement (cursor)" is enabled, the cursor disappears entirely from the screen rather than freezing in place — cleaner, more obvious lock state. The cursor reappears the moment you unlock.</li>
+                </ul>
+            ]]></description>
+            <enclosure
+                url="https://screenlock.app/downloads/ScreenLock-0.3.4.dmg"
+                sparkle:version="0.3.4"
+                sparkle:shortVersionString="0.3.4"
+                sparkle:edSignature="5ok5ZV5asrHSu2vrPCarCcZkheCNj1xTgjXvaqJhRjeKgckZMy7HDnWZN24gL3OBfluiYdMFWgzc7A+ZVglnDg=="
+                length="2038396"
+                type="application/x-apple-diskimage"/>
+        </item>
+
+        <item>
             <title>Version 0.3.3</title>
             <pubDate>Mon, 18 May 2026 18:17:31 +0000</pubDate>
             <sparkle:version>0.3.3</sparkle:version>
