@@ -9,6 +9,27 @@
         <language>en</language>
 
         <item>
+            <title>Version 0.3.2</title>
+            <pubDate>Mon, 18 May 2026 18:07:28 +0000</pubDate>
+            <sparkle:version>0.3.2</sparkle:version>
+            <sparkle:shortVersionString>0.3.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h2>What's new in 0.3.2</h2>
+                <ul>
+                    <li><b>Cursor freeze actually freezes now.</b> When the "Mouse movement (cursor)" toggle is on, the cursor stops moving on screen while locked. Previously, mouseMoved events were being swallowed for apps but the WindowServer was still moving the cursor visually in response to mouse hardware. Now we call <code>CGAssociateMouseAndMouseCursorPosition</code> to disconnect the cursor from the mouse while locked, and re-associate on unlock.</li>
+                </ul>
+            ]]></description>
+            <enclosure
+                url="https://screenlock.app/downloads/ScreenLock-0.3.2.dmg"
+                sparkle:version="0.3.2"
+                sparkle:shortVersionString="0.3.2"
+                sparkle:edSignature="2h48p3LL5ucMMpUBfBLepq2+bEnBPNHUirKk7w9QK4oMNk5CqhyO1Hw9texTleQRb30X7lB1Pk2DQJuzNgaDAQ=="
+                length="2037512"
+                type="application/x-apple-diskimage"/>
+        </item>
+
+        <item>
             <title>Version 0.3.1</title>
             <pubDate>Sat, 16 May 2026 06:34:22 +0000</pubDate>
             <sparkle:version>0.3.1</sparkle:version>
