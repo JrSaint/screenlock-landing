@@ -176,6 +176,85 @@ section h2 {
     margin-bottom: 56px;
 }
 
+/* === Screenshots section === */
+.screens {
+    background: linear-gradient(180deg, #ffffff 0%, var(--paper-tint) 100%);
+}
+
+.screens-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+    align-items: center;
+    max-width: 980px;
+    margin: 0 auto 32px;
+}
+
+.screens-item {
+    margin: 0;
+}
+
+.screens-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 24px 60px rgba(15, 30, 65, 0.18);
+    background: var(--paper);
+}
+
+.screens-item figcaption {
+    margin-top: 16px;
+    text-align: center;
+    color: var(--ink-mid);
+    font-size: 0.95rem;
+}
+
+.menubar-callout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 16px;
+    padding: 18px 24px;
+    border-radius: 12px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+}
+
+.callout-label {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+}
+
+.callout-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.callout-icon img {
+    vertical-align: middle;
+}
+
+.callout-arrow {
+    color: var(--ink-soft);
+}
+
+@media (max-width: 720px) {
+    .screens-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
 /* === Use cases === */
 .use-cases {
     background: var(--paper-tint);
