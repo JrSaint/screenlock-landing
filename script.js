@@ -14,10 +14,10 @@ function paddleConfigured() {
 }
 
 if (paddleConfigured() && window.Paddle) {
-    Paddle.Initialize({
-        token: PADDLE_CLIENT_TOKEN,
-        environment: "production",
-    });
+    // CDN Paddle.js v2 doesn't accept `environment` in Initialize — it defaults
+    // to production. For sandbox testing, call Paddle.Environment.set("sandbox")
+    // BEFORE Paddle.Initialize.
+    Paddle.Initialize({ token: PADDLE_CLIENT_TOKEN });
 }
 
 function openCheckout() {
