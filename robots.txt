@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /downloads/
+Disallow: /thanks.html
 
 Sitemap: https://screenlock.app/sitemap.xml
