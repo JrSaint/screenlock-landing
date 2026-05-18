@@ -9,6 +9,27 @@
         <language>en</language>
 
         <item>
+            <title>Version 0.4.3</title>
+            <pubDate>Mon, 18 May 2026 20:31:25 +0000</pubDate>
+            <sparkle:version>0.4.3</sparkle:version>
+            <sparkle:shortVersionString>0.4.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h2>What's new in 0.4.3</h2>
+                <ul>
+                    <li><b>Touch ID unlock has been removed.</b> Apple's LocalAuthentication framework requires a system prompt to appear every time, and that prompt occluded the very screen content ScreenLock is meant to keep visible. PIN unlock provides the same shoulder-surfing protection without the visual overlay. Hotkey + PIN remain the unlock paths.</li>
+                </ul>
+            ]]></description>
+            <enclosure
+                url="https://screenlock.app/downloads/ScreenLock-0.4.3.dmg"
+                sparkle:version="0.4.3"
+                sparkle:shortVersionString="0.4.3"
+                sparkle:edSignature="NpVCGFXrFLvrJEPX8dTx9FL59s22P8SARK6pp3Elp3iVavAbFFcspfwNnw59TAwxVeMmIxBklA9NYO6JGI+zBA=="
+                length="2053228"
+                type="application/x-apple-diskimage"/>
+        </item>
+
+        <item>
             <title>Version 0.4.2</title>
             <pubDate>Mon, 18 May 2026 20:06:23 +0000</pubDate>
             <sparkle:version>0.4.2</sparkle:version>
