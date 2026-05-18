@@ -9,6 +9,27 @@
         <language>en</language>
 
         <item>
+            <title>Version 0.4.2</title>
+            <pubDate>Mon, 18 May 2026 20:06:23 +0000</pubDate>
+            <sparkle:version>0.4.2</sparkle:version>
+            <sparkle:shortVersionString>0.4.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h2>What's new in 0.4.2</h2>
+                <ul>
+                    <li><b>Hotkey is no longer displayed in the menu bar dropdown.</b> Previously anyone glancing at the menu could see the unlock combo. Now it lives only in Settings, where it belongs.</li>
+                </ul>
+            ]]></description>
+            <enclosure
+                url="https://screenlock.app/downloads/ScreenLock-0.4.2.dmg"
+                sparkle:version="0.4.2"
+                sparkle:shortVersionString="0.4.2"
+                sparkle:edSignature="/grH6Nr60VHCClj0NjNmiY8jycHeqgoOPWPEUYR+R57sMOelvvzwHvCnSm+tt2iXoqdsvMe24iQnXf12u8/zDA=="
+                length="2033084"
+                type="application/x-apple-diskimage"/>
+        </item>
+
+        <item>
             <title>Version 0.4.1</title>
             <pubDate>Mon, 18 May 2026 19:59:42 +0000</pubDate>
             <sparkle:version>0.4.1</sparkle:version>
