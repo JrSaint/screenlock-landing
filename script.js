@@ -2,7 +2,7 @@
 //
 // To enable real checkouts:
 //   1. Sign up at paddle.com → get your Client-side Token (Developer Tools → Authentication).
-//   2. In Paddle, create a Product → Price for ScreenLock at $9.99 USD.
+//   2. In Paddle, create a Product → Price for ScreenLock at $7.99 USD.
 //   3. Replace PADDLE_CLIENT_TOKEN and PADDLE_PRICE_ID below with your values.
 //   4. Set Paddle.Environment.set("sandbox") for testing, remove for production.
 
