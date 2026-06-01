@@ -9,6 +9,27 @@
         <language>en</language>
 
         <item>
+            <title>Version 0.4.7</title>
+            <pubDate>Mon, 01 Jun 2026 07:59:42 +0000</pubDate>
+            <sparkle:version>0.4.7</sparkle:version>
+            <sparkle:shortVersionString>0.4.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h2>What's new in 0.4.7</h2>
+                <ul>
+                    <li><b>Cursor is genuinely hidden when locked now.</b> Previous attempts used CGDisplayHideCursor (process-scoped, breaks when focus shifts) and off-screen warping (clamped to the top-left corner on modern macOS). New approach: a transparent full-screen overlay window with an invisible cursor rect. The cursor is hidden anywhere on screen regardless of which app is frontmost, with no flicker.</li>
+                </ul>
+            ]]></description>
+            <enclosure
+                url="https://screenlock.app/downloads/ScreenLock-0.4.7.dmg"
+                sparkle:version="0.4.7"
+                sparkle:shortVersionString="0.4.7"
+                sparkle:edSignature="5y3gu90qARnD/sc4KrpQ1JoiG9FX9trBPKZYu13rAgvyb8tD2cV+LRPVyXu7UJ5eEWp88l0F/c/xI6DC90PFCQ=="
+                length="2029772"
+                type="application/x-apple-diskimage"/>
+        </item>
+
+        <item>
             <title>Version 0.4.6</title>
             <pubDate>Mon, 01 Jun 2026 07:47:33 +0000</pubDate>
             <sparkle:version>0.4.6</sparkle:version>
