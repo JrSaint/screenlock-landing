@@ -9,6 +9,27 @@
         <language>en</language>
 
         <item>
+            <title>Version 0.4.5</title>
+            <pubDate>Mon, 01 Jun 2026 07:38:51 +0000</pubDate>
+            <sparkle:version>0.4.5</sparkle:version>
+            <sparkle:shortVersionString>0.4.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h2>What's new in 0.4.5</h2>
+                <ul>
+                    <li><b>Cursor stays hidden more reliably while locked.</b> Some system events (notifications, focus changes, display sleep/wake) could occasionally make the cursor reappear, sometimes in the top-left corner. The cursor is now re-parked off-screen every 200&nbsp;ms while locked as a safety net.</li>
+                </ul>
+            ]]></description>
+            <enclosure
+                url="https://screenlock.app/downloads/ScreenLock-0.4.5.dmg"
+                sparkle:version="0.4.5"
+                sparkle:shortVersionString="0.4.5"
+                sparkle:edSignature="qSrmnI4Js3QBRIkDjNyCX0vyWO5CWGzZ5Yt8/QBgJolYMhQgde4uyEh9vdRJ/1RXhtAvsvkw/UT7AZIpYk9LDA=="
+                length="2029974"
+                type="application/x-apple-diskimage"/>
+        </item>
+
+        <item>
             <title>Version 0.4.4</title>
             <pubDate>Tue, 19 May 2026 15:02:12 +0000</pubDate>
             <sparkle:version>0.4.4</sparkle:version>
