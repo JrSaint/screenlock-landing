@@ -9,6 +9,27 @@
         <language>en</language>
 
         <item>
+            <title>Version 0.4.8</title>
+            <pubDate>Mon, 01 Jun 2026 08:08:07 +0000</pubDate>
+            <sparkle:version>0.4.8</sparkle:version>
+            <sparkle:shortVersionString>0.4.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h2>What's new in 0.4.8</h2>
+                <ul>
+                    <li><b>Cursor actually disappears now when locked.</b> The overlay window in 0.4.7 was using addCursorRect alone, which AppKit only honors for key windows. Now the overlay registers an explicit NSTrackingArea with .cursorUpdate so the invisible cursor is applied regardless of whether the window is key or active — works correctly for the LSUIElement menu-bar app.</li>
+                </ul>
+            ]]></description>
+            <enclosure
+                url="https://screenlock.app/downloads/ScreenLock-0.4.8.dmg"
+                sparkle:version="0.4.8"
+                sparkle:shortVersionString="0.4.8"
+                sparkle:edSignature="x/mEmFASnbcW+TmdjVRVV7QyzG1/KFPchwtHM0Gd0cIRAmvZsDkgac87w+bHzMjhStnRxS2RqiadSJUupnqEAA=="
+                length="1668602"
+                type="application/x-apple-diskimage"/>
+        </item>
+
+        <item>
             <title>Version 0.4.7</title>
             <pubDate>Mon, 01 Jun 2026 07:59:42 +0000</pubDate>
             <sparkle:version>0.4.7</sparkle:version>
