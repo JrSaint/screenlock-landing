@@ -9,6 +9,27 @@
         <language>en</language>
 
         <item>
+            <title>Version 0.4.6</title>
+            <pubDate>Mon, 01 Jun 2026 07:47:33 +0000</pubDate>
+            <sparkle:version>0.4.6</sparkle:version>
+            <sparkle:shortVersionString>0.4.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h2>What's new in 0.4.6</h2>
+                <ul>
+                    <li><b>Cursor no longer jumps to the top-left corner when locking.</b> Previous releases warped the cursor far off-screen, but newer macOS clamps warp coordinates to the visible display bounds — so the cursor appeared in the top-left instead of disappearing. New strategy keeps the cursor where you last had it and uses CGDisplayHideCursor to hide it, with a 200&nbsp;ms re-apply timer for robustness across focus changes.</li>
+                </ul>
+            ]]></description>
+            <enclosure
+                url="https://screenlock.app/downloads/ScreenLock-0.4.6.dmg"
+                sparkle:version="0.4.6"
+                sparkle:shortVersionString="0.4.6"
+                sparkle:edSignature="ng4QI9Ap3m0I4hmWmw8gZNdt8+KdW6hR6MazgB+4LirvbWWaFcFGtfTUSAKg8WF65cvbKIaycehbHx9KI8jHBg=="
+                length="2030389"
+                type="application/x-apple-diskimage"/>
+        </item>
+
+        <item>
             <title>Version 0.4.5</title>
             <pubDate>Mon, 01 Jun 2026 07:38:51 +0000</pubDate>
             <sparkle:version>0.4.5</sparkle:version>
