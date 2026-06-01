@@ -9,6 +9,27 @@
         <language>en</language>
 
         <item>
+            <title>Version 0.4.9</title>
+            <pubDate>Mon, 01 Jun 2026 08:21:10 +0000</pubDate>
+            <sparkle:version>0.4.9</sparkle:version>
+            <sparkle:shortVersionString>0.4.9</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h2>What's new in 0.4.9</h2>
+                <ul>
+                    <li><b>The cursor now truly disappears while locked.</b> Earlier builds tried to hide it in ways macOS only honors for the foreground app — but ScreenLock runs in the menu bar, so the cursor stayed visible or jumped to the corner. ScreenLock now hides the cursor reliably system-wide and restores it exactly where you left it on unlock.</li>
+                </ul>
+            ]]></description>
+            <enclosure
+                url="https://screenlock.app/downloads/ScreenLock-0.4.9.dmg"
+                sparkle:version="0.4.9"
+                sparkle:shortVersionString="0.4.9"
+                sparkle:edSignature="9J3XYcZO8NWq/VKgrvfNax8yzXWJ6neCXs+CP9qqQnHbs+TC98QOe0l5fSPYtENpbaklB/b0AFqHfBR64sojDQ=="
+                length="2031041"
+                type="application/x-apple-diskimage"/>
+        </item>
+
+        <item>
             <title>Version 0.4.8</title>
             <pubDate>Mon, 01 Jun 2026 08:08:07 +0000</pubDate>
             <sparkle:version>0.4.8</sparkle:version>
