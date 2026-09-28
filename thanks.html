@@ -83,17 +83,54 @@
 (function () {
     const WORKER = "https://screenlock-api.santosministries.workers.dev/download";
 
+    // Right after checkout, a Paddle one-time transaction sits in "ready" for
+    // up to ~100s before flipping to "completed". During that window the
+    // Worker correctly returns transaction_not_paid — so instead of erroring
+    // out (and sending the buyer to email support), we poll patiently and let
+    // the confirmation resolve itself.
+    const RETRY_INTERVAL_MS = 3000;
+    const MAX_WAIT_MS = 150000; // ~2.5 minutes
+
     const $status = document.getElementById("download-status");
     const $btn = document.getElementById("download-btn");
     const $help = document.getElementById("download-help");
     const $error = document.getElementById("download-error");
 
+    const startedAt = Date.now();
+    let done = false;
+
     function showError(reason) {
+        if (done) return;
+        done = true;
         $status.style.display = "none";
         $btn.style.display = "none";
         $help.style.display = "none";
         $error.style.display = "block";
         if (reason) console.warn("[thanks] download blocked:", reason);
+    }
+
+    function showDownload(body) {
+        if (done) return;
+        done = true;
+        $status.textContent = "Your purchase is confirmed.";
+        $btn.href = body.downloadUrl;
+        $btn.textContent = "Download ScreenLock " + (body.version || "");
+        $btn.style.display = "inline-block";
+        $help.style.display = "block";
+        // Auto-start the download. Modern browsers respect the `download`
+        // attribute when the click is programmatic.
+        setTimeout(function () { $btn.click(); }, 600);
+    }
+
+    // True for conditions that can resolve by waiting: the payment still
+    // finalizing, or a transient upstream/network hiccup. A malformed or
+    // unknown transaction id will never resolve, so we fail fast on those.
+    function isRetryable(httpStatus, errorCode) {
+        if (errorCode === "transaction_not_paid") return true; // still finalizing
+        if (errorCode === "paddle_unreachable") return true;   // transient
+        if (errorCode === "paddle_error") return true;         // transient
+        if (httpStatus >= 500) return true;                    // transient
+        return false;
     }
 
     const params = new URLSearchParams(window.location.search);
@@ -105,23 +142,43 @@
         return;
     }
 
-    fetch(WORKER + "?txn=" + encodeURIComponent(txn), { method: "GET" })
-        .then(r => r.json().then(body => ({ status: r.status, body })))
-        .then(({ status, body }) => {
-            if (status !== 200 || !body.downloadUrl) {
-                showError(body.error || ("HTTP " + status));
-                return;
-            }
-            $status.textContent = "Your purchase is confirmed.";
-            $btn.href = body.downloadUrl;
-            $btn.textContent = "Download ScreenLock " + body.version;
-            $btn.style.display = "inline-block";
-            $help.style.display = "block";
-            // Auto-start the download. Modern browsers respect the `download`
-            // attribute when the click is programmatic.
-            setTimeout(() => $btn.click(), 600);
-        })
-        .catch(err => showError("network error: " + err.message));
+    function retryOrGiveUp(reason) {
+        if (done) return;
+        if (Date.now() - startedAt >= MAX_WAIT_MS) {
+            showError("timed out waiting: " + reason);
+            return;
+        }
+        // Reassure the buyer we're still working while the payment finalizes.
+        $status.textContent = "Confirming your purchase — this can take up to a minute…";
+        setTimeout(attempt, RETRY_INTERVAL_MS);
+    }
+
+    function attempt() {
+        if (done) return;
+        fetch(WORKER + "?txn=" + encodeURIComponent(txn), { method: "GET" })
+            .then(function (r) {
+                return r.json().then(function (body) {
+                    return { status: r.status, body: body || {} };
+                });
+            })
+            .then(function (res) {
+                if (res.status === 200 && res.body.downloadUrl) {
+                    showDownload(res.body);
+                    return;
+                }
+                if (isRetryable(res.status, res.body.error)) {
+                    retryOrGiveUp(res.body.error || ("HTTP " + res.status));
+                } else {
+                    showError(res.body.error || ("HTTP " + res.status));
+                }
+            })
+            .catch(function (err) {
+                // Network error — treat as transient and keep trying.
+                retryOrGiveUp("network error: " + (err && err.message));
+            });
+    }
+
+    attempt();
 })();
 </script>
 
