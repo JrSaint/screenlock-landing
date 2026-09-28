@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download ScreenLock</title>
+<meta name="description" content="Already bought ScreenLock? Enter your Paddle order number to get your download.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://screenlock.app/download.html">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="topnav">
+    <a href="/" class="brand">
+        <img src="assets/icon.png" alt="ScreenLock" width="32" height="32">
+        <span>ScreenLock</span>
+    </a>
+    <a href="/" class="nav-cta">Home</a>
+</nav>
+
+<main class="legal">
+    <div class="container narrow">
+        <h1>Get your download</h1>
+        <p class="updated">Already bought ScreenLock but don't have the download? Enter the order number from your Paddle receipt and we'll confirm it and hand it over.</p>
+
+        <div class="price-card" id="download-card">
+            <form id="recover-form" novalidate>
+                <label for="order-input"><strong>Order number</strong></label>
+                <p class="fine-print" style="margin:.35rem 0 .6rem">It's on your receipt email from Paddle — it looks like <code>30458-10005</code>.</p>
+                <input id="order-input" type="text" inputmode="text" autocomplete="off"
+                       autocapitalize="off" spellcheck="false" placeholder="30458-10005"
+                       style="width:100%;box-sizing:border-box;padding:.7rem .8rem;font-size:1.05rem;border:1px solid #cbd2dc;border-radius:8px;margin-bottom:.8rem">
+                <button type="submit" class="btn-primary btn-large" id="recover-btn" style="border:none;cursor:pointer">Get my download</button>
+            </form>
+
+            <p id="recover-status" style="display:none;margin-top:1rem"></p>
+
+            <a id="download-btn" class="btn-primary btn-large" href="#" download
+               style="display:none;text-decoration:none;margin-top:1rem">Download ScreenLock</a>
+            <p id="download-help" class="fine-print" style="display:none">
+                If the button doesn't trigger a download automatically, click it manually. The DMG is ~2 MB.
+            </p>
+
+            <div id="recover-error" style="display:none;margin-top:1rem">
+                <p class="recover-error-msg"></p>
+            </div>
+        </div>
+
+        <h2>First-launch checklist</h2>
+        <ol>
+            <li><strong>Mount the DMG</strong> by double-clicking it in Finder.</li>
+            <li><strong>Drag ScreenLock to Applications</strong> using the shortcut inside the DMG window.</li>
+            <li><strong>Open Applications &rarr; ScreenLock</strong>. First time you may see a Gatekeeper prompt — choose Open.</li>
+            <li><strong>Grant Accessibility permission</strong> in System Settings &rarr; Privacy &amp; Security &rarr; Accessibility, so it can lock keyboard, mouse, and trackpad input.</li>
+            <li><strong>Press your hotkey</strong> — default <code>⌃⌥⌘L</code> — to lock and unlock.</li>
+        </ol>
+
+        <h2>Can't find your order number?</h2>
+        <p>Search your inbox for a receipt from <strong>Paddle</strong> (subject line mentions ScreenLock or KERIGAMI LLC). The order number is near the top. Still stuck? Email <a href="mailto:hello@screenlock.app">hello@screenlock.app</a> and we'll sort you out.</p>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-left">
+            <img src="assets/icon.png" alt="" width="32" height="32">
+            <span>ScreenLock</span>
+        </div>
+        <div class="footer-right">
+            <a href="/">Home</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="refunds.html">Refunds</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="mailto:hello@screenlock.app">Support</a>
+            <span class="copyright">© 2026 KERIGAMI LLC</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+(function () {
+    const WORKER = "https://screenlock-api.santosministries.workers.dev/download";
+
+    const $form = document.getElementById("recover-form");
+    const $input = document.getElementById("order-input");
+    const $btn = document.getElementById("recover-btn");
+    const $status = document.getElementById("recover-status");
+    const $dl = document.getElementById("download-btn");
+    const $help = document.getElementById("download-help");
+    const $error = document.getElementById("recover-error");
+    const $errorMsg = $error.querySelector(".recover-error-msg");
+
+    function resetMessages() {
+        $status.style.display = "none";
+        $error.style.display = "none";
+        $dl.style.display = "none";
+        $help.style.display = "none";
+    }
+
+    function showError(msg) {
+        $status.style.display = "none";
+        $errorMsg.textContent = msg;
+        $error.style.display = "block";
+    }
+
+    function errorMessage(code, httpStatus) {
+        switch (code) {
+            case "order_not_found":
+                return "We couldn't find a completed order with that number. Double-check it against your Paddle receipt — or email hello@screenlock.app and we'll help.";
+            case "invalid_order":
+                return "That doesn't look like a valid order number. It should look like 30458-10005 (from your Paddle receipt).";
+            case "transaction_not_paid":
+                return "That order isn't marked paid yet. If you just purchased, give it a minute and try again.";
+            default:
+                return "Something went wrong (" + (code || ("HTTP " + httpStatus)) + "). Please email hello@screenlock.app and we'll send your download.";
+        }
+    }
+
+    $form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const order = ($input.value || "").trim();
+        if (!order) {
+            showError("Enter the order number from your Paddle receipt.");
+            return;
+        }
+        resetMessages();
+        $btn.disabled = true;
+        $status.style.display = "block";
+        $status.textContent = "Checking your order…";
+
+        fetch(WORKER + "?order=" + encodeURIComponent(order), { method: "GET" })
+            .then(function (r) {
+                return r.json().then(function (body) {
+                    return { status: r.status, body: body || {} };
+                });
+            })
+            .then(function (res) {
+                $btn.disabled = false;
+                if (res.status === 200 && res.body.downloadUrl) {
+                    $status.style.display = "block";
+                    $status.textContent = "Purchase confirmed — your download is ready.";
+                    $dl.href = res.body.downloadUrl;
+                    $dl.textContent = "Download ScreenLock " + (res.body.version || "");
+                    $dl.style.display = "inline-block";
+                    $help.style.display = "block";
+                    setTimeout(function () { $dl.click(); }, 600);
+                } else {
+                    showError(errorMessage(res.body.error, res.status));
+                }
+            })
+            .catch(function () {
+                $btn.disabled = false;
+                showError("Network error — please try again in a moment.");
+            });
+    });
+})();
+</script>
+
+</body>
+</html>
